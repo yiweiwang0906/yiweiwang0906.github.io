@@ -1,0 +1,17 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "About"
+    url: /about/
+  - title: "Research"
+    url: /research/
+  - title: "Teaching"
+    url: /teaching/
+  - title: "Students"
+    url: /students/
+  - title: "Service"
+    url: /service/
+  - title: "Awards"
+    url: /awards/
+  - title: "Misc."
+    url: /misc/
