@@ -183,6 +183,8 @@
 
     .weather .rain { border-left-color: var(--blue); }
     .weather .hot { border-left-color: var(--gold); }
+    .weather .live { border-left-color: var(--green); }
+    .weather .wear { border-left-color: var(--red); }
 
     .map-wrap {
       display: grid;
@@ -293,6 +295,12 @@
 
     td strong { color: var(--ink); }
     .taxi { color: var(--blue); font-weight: 800; text-decoration: none; }
+    .taxi::after {
+      content: " / 网页路线";
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+    }
 
     .cards {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -389,15 +397,19 @@
     <section id="weather">
       <div class="section-head">
         <div>
-          <h2>天气与路线策略</h2>
-          <p class="sub">高德天气：5月2日雨，后续转阴、多云、晴。路线按“雨天少户外、晴天避暴晒”处理。</p>
+          <h2>天气与穿衣策略</h2>
+          <p class="sub">当前长沙约 26°C，多云。5月2日有雨，后续转阴、多云、晴；路线按“雨天少户外、晴天避暴晒”处理。</p>
         </div>
       </div>
       <div class="grid weather">
-        <div class="tile rain"><b>5/2 中雨转小雨</b><span>抵达较晚，不跨区游玩。到酒店后只做五一商圈夜宵。</span></div>
-        <div class="tile"><b>5/3 阴转多云</b><span>上午适合湖南博物院；傍晚按预约走岳麓山与橘子洲。</span></div>
-        <div class="tile"><b>5/4 多云转晴</b><span>适合五一商圈 citywalk、杜甫江阁和湘江夜景。</span></div>
+        <div class="tile live"><b>实时约 26°C · 多云</b><span>体感偏暖，室外走动会出汗；随身带水，晚间江边仍建议备薄外套。</span></div>
+        <div class="tile rain"><b>5/2 中雨转小雨</b><span>抵达较晚，不跨区游玩。到酒店后只做五一商圈夜宵，雨伞放随身包。</span></div>
+        <div class="tile"><b>5/3 阴转多云</b><span>上午适合湖南博物院；傍晚按预约走岳麓山与橘子洲，山上注意防滑。</span></div>
         <div class="tile hot"><b>5/5 晴 29°C</b><span>李自健美术馆放上午，少晒；下午留足取行李和返站缓冲。</span></div>
+        <div class="tile wear"><b>男士穿衣</b><span>速干T恤/薄衬衫 + 轻薄长裤或短裤；带一件薄外套，雨天穿防滑运动鞋。</span></div>
+        <div class="tile wear"><b>女士穿衣</b><span>短袖/薄衬衫 + 半裙或轻薄长裤；江边和高铁空调备薄开衫，雨天避免拖地裙摆。</span></div>
+        <div class="tile"><b>共同装备</b><span>折叠伞、纸巾、充电宝、防晒、创可贴；5月5日晴天建议墨镜或帽子。</span></div>
+        <div class="tile"><b>路线调整</b><span>下雨时压缩岳麓山徒步，优先室内馆、商场和文和友；晴天午后减少暴晒步行。</span></div>
       </div>
     </section>
 
@@ -455,7 +467,7 @@
       <div class="section-head">
         <div>
           <h2>逐日行程</h2>
-          <p class="sub">表内“打车”链接会尝试唤起高德 App 直接叫车。</p>
+          <p class="sub">表内“打车 / 网页路线”链接：手机端唤起高德 App，电脑端自动打开高德网页版路线。</p>
         </div>
       </div>
       <div class="days">
@@ -584,5 +596,27 @@
   <footer>
     天气来源：高德天气查询。路线以高德 App 实时交通为准；节假日请预留更多排队与打车时间。
   </footer>
+  <script>
+    const isMobileAmapTarget = /Android|iPhone|iPad|iPod|HarmonyOS/i.test(navigator.userAgent);
+
+    function paramFromUri(uri, key) {
+      const match = uri.match(new RegExp("[?&]" + key + "=([^&]+)"));
+      return match ? decodeURIComponent(match[1].replace(/\+/g, " ")) : "";
+    }
+
+    document.querySelectorAll("a.taxi[href^='amapuri://drive/takeTaxi']").forEach((link) => {
+      const appUri = link.getAttribute("href");
+      const start = paramFromUri(appUri, "sname");
+      const end = paramFromUri(appUri, "dname");
+      const webUrl = "https://www.amap.com/search?query=" + encodeURIComponent(`${start} 到 ${end}`);
+      link.setAttribute("title", "手机端唤起高德打车，电脑端打开高德网页版路线");
+      link.addEventListener("click", (event) => {
+        if (!isMobileAmapTarget) {
+          event.preventDefault();
+          window.open(webUrl, "_blank", "noopener,noreferrer");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
