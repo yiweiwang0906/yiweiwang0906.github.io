@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>长沙五一旅行攻略 | 2026</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #667789;
+      --line: #e6edf2;
+      --paper: #ffffff;
+      --bg: #f4f7f7;
+      --green: #087f68;
+      --teal: #0f9f9a;
+      --gold: #c9811d;
+      --blue: #2f6fed;
+      --red: #c94b3b;
+      --shadow: 0 18px 45px rgba(25, 42, 58, .12);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      align-items: end;
+      padding: 28px;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(10, 24, 31, .18), rgba(10, 24, 31, .82)),
+        url("https://aos-comment.amap.com/B02DB05Z1Q/comment/20260313-ba833722707507a999154492-5fpH33gOgEd8yYD7t12DGQ.jpg") center/cover;
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding-bottom: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 14px;
+      letter-spacing: 0;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,.42);
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      max-width: 980px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      font-size: 18px;
+      color: rgba(255,255,255,.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .btn.dark {
+      background: rgba(20, 32, 38, .72);
+      color: #fff;
+      border-color: rgba(255,255,255,.28);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin: 6px 0 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: -54px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tile, .card, .day, .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(25,42,58,.06);
+    }
+
+    .tile {
+      padding: 18px;
+      min-height: 118px;
+    }
+
+    .tile b {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .tile span { color: var(--muted); font-size: 14px; }
+
+    .weather {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .weather .tile {
+      border-left: 4px solid var(--teal);
+    }
+
+    .weather .rain { border-left-color: var(--blue); }
+    .weather .hot { border-left-color: var(--gold); }
+
+    .map-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .route-map {
+      min-height: 520px;
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    svg { width: 100%; height: 100%; display: block; }
+
+    .legend {
+      padding: 18px;
+    }
+
+    .legend-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .legend-item {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      margin-top: 2px;
+      background: var(--green);
+      border: 4px solid #d9f1eb;
+    }
+
+    .dot.d2 { background: var(--blue); border-color: #dfe9ff; }
+    .dot.d3 { background: var(--gold); border-color: #fff0d8; }
+    .dot.d4 { background: var(--red); border-color: #ffe3de; }
+
+    .days {
+      display: grid;
+      gap: 18px;
+    }
+
+    .day {
+      overflow: hidden;
+    }
+
+    .day-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px;
+      background: #f9fbfb;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .day-header h3 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e9f7f2;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .table-scroll { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    th {
+      color: var(--muted);
+      background: #fbfcfc;
+      font-weight: 800;
+    }
+
+    td strong { color: var(--ink); }
+    .taxi { color: var(--blue); font-weight: 800; text-decoration: none; }
+
+    .cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      background: #d9e3e5;
+    }
+
+    .card-body { padding: 14px; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .share {
+      background: #10242d;
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .share p, .share li { color: rgba(255,255,255,.78); }
+    .share code {
+      background: rgba(255,255,255,.12);
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .summary, .weather, .cards, .two-col, .map-wrap {
+        grid-template-columns: 1fr;
+      }
+      .summary { margin-top: 16px; }
+      .hero { min-height: 76vh; padding: 20px; }
+      .route-map { min-height: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">2026.05.02-05.05 · 长沙 3天3晚</div>
+      <h1>长沙五一旅行攻略</h1>
+      <p>住在五一广场 IFS 商圈，围绕高铁到离、岳麓山/橘子洲预约和李自健美术馆门票安排路线。同一天景区之间默认打车，天气不稳时优先室内与短步行。</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="amapuri://workInAmap/createWithToken?polymericId=mcp_97e75ffc47f14678a767b22f3536913a&from=MCP">打开高德行程地图</a>
+        <a class="btn dark" href="#route">查看自绘路线</a>
+        <a class="btn dark" href="#share">怎么分享给太太</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid summary" aria-label="行程摘要">
+      <div class="tile"><b>G207 抵达</b><span>5月2日 19:59 到长沙南，首晚只安排入住和轻量夜宵。</span></div>
+      <div class="tile"><b>酒店锚点</b><span>长沙INTIMATE有读·书房酒店，中山路93号，靠近五一广场/IFS。</span></div>
+      <div class="tile"><b>固定预约</b><span>5月3日 17:00-22:00 岳麓山与橘子洲，作为核心夜景块。</span></div>
+      <div class="tile"><b>G252 返程</b><span>5月5日 18:40 长沙南发车，建议 16:40 前到站。</span></div>
+    </div>
+
+    <section id="weather">
+      <div class="section-head">
+        <div>
+          <h2>天气与路线策略</h2>
+          <p class="sub">高德天气：5月2日雨，后续转阴、多云、晴。路线按“雨天少户外、晴天避暴晒”处理。</p>
+        </div>
+      </div>
+      <div class="grid weather">
+        <div class="tile rain"><b>5/2 中雨转小雨</b><span>抵达较晚，不跨区游玩。到酒店后只做五一商圈夜宵。</span></div>
+        <div class="tile"><b>5/3 阴转多云</b><span>上午适合湖南博物院；傍晚按预约走岳麓山与橘子洲。</span></div>
+        <div class="tile"><b>5/4 多云转晴</b><span>适合五一商圈 citywalk、杜甫江阁和湘江夜景。</span></div>
+        <div class="tile hot"><b>5/5 晴 29°C</b><span>李自健美术馆放上午，少晒；下午留足取行李和返站缓冲。</span></div>
+      </div>
+    </section>
+
+    <section id="route">
+      <div class="section-head">
+        <div>
+          <h2>自绘旅游路线地图</h2>
+          <p class="sub">这是 H5 内的自定义示意地图；精确导航和打车使用下方高德 App 按钮。</p>
+        </div>
+        <a class="btn primary" href="amapuri://workInAmap/createWithToken?polymericId=mcp_97e75ffc47f14678a767b22f3536913a&from=MCP">高德 App 展示整条行程</a>
+      </div>
+      <div class="map-wrap">
+        <div class="route-map panel">
+          <svg viewBox="0 0 900 560" role="img" aria-label="长沙旅行路线示意图">
+            <defs>
+              <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#16303c" flood-opacity=".14" />
+              </filter>
+            </defs>
+            <rect x="0" y="0" width="900" height="560" rx="18" fill="#eff6f5" />
+            <path d="M405 20 C365 120 425 180 382 275 C335 380 388 445 350 540" fill="none" stroke="#8bc6d7" stroke-width="34" stroke-linecap="round" opacity=".72" />
+            <path d="M410 20 C370 120 430 180 387 275 C340 380 393 445 355 540" fill="none" stroke="#ffffff" stroke-width="4" stroke-dasharray="8 12" opacity=".8" />
+            <path d="M700 430 C618 372 560 330 505 272 C454 218 422 170 365 126" fill="none" stroke="#2f6fed" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10" />
+            <path d="M450 145 C490 112 545 96 610 105" fill="none" stroke="#c9811d" stroke-width="5" stroke-linecap="round" />
+            <path d="M368 300 C422 312 486 306 555 260" fill="none" stroke="#087f68" stroke-width="5" stroke-linecap="round" />
+            <path d="M502 385 C570 418 635 448 735 438" fill="none" stroke="#c94b3b" stroke-width="5" stroke-linecap="round" />
+
+            <g filter="url(#soft)">
+              <circle cx="610" cy="105" r="18" fill="#087f68" /><text x="637" y="111" font-size="24" fill="#17212b">酒店 / 五一广场</text>
+              <circle cx="685" cy="145" r="15" fill="#087f68" /><text x="710" y="151" font-size="20" fill="#17212b">IFS / 黄兴路</text>
+              <circle cx="620" cy="58" r="15" fill="#2f6fed" /><text x="646" y="64" font-size="20" fill="#17212b">湖南博物院</text>
+              <circle cx="365" cy="126" r="16" fill="#2f6fed" /><text x="180" y="132" font-size="21" fill="#17212b">岳麓山</text>
+              <circle cx="385" cy="275" r="16" fill="#2f6fed" /><text x="224" y="282" font-size="21" fill="#17212b">橘子洲</text>
+              <circle cx="555" cy="260" r="15" fill="#c9811d" /><text x="582" y="266" font-size="21" fill="#17212b">杜甫江阁</text>
+              <circle cx="590" cy="315" r="15" fill="#c9811d" /><text x="618" y="321" font-size="21" fill="#17212b">文和友</text>
+              <circle cx="502" cy="385" r="16" fill="#c94b3b" /><text x="530" y="392" font-size="21" fill="#17212b">李自健美术馆</text>
+              <circle cx="735" cy="438" r="16" fill="#c94b3b" /><text x="762" y="445" font-size="21" fill="#17212b">长沙南站</text>
+            </g>
+          </svg>
+        </div>
+        <aside class="legend panel">
+          <h3>路线逻辑</h3>
+          <div class="legend-list">
+            <div class="legend-item"><span class="dot"></span><span><strong>五一商圈锚点</strong><br>酒店、IFS、黄兴路、坡子街集中，适合步行和夜宵。</span></div>
+            <div class="legend-item"><span class="dot d2"></span><span><strong>5月3日预约线</strong><br>上午室内，下午休息，傍晚打车/地铁到岳麓山，接橘子洲夜景。</span></div>
+            <div class="legend-item"><span class="dot d3"></span><span><strong>5月4日江边夜景线</strong><br>杜甫江阁、湘江沿岸、文和友集中在傍晚后。</span></div>
+            <div class="legend-item"><span class="dot d4"></span><span><strong>5月5日返程线</strong><br>李自健美术馆放上午，下午回酒店取行李并去长沙南。</span></div>
+          </div>
+          <p class="sub">同一天景区之间按你的偏好默认打车；商圈内部短距离仍建议步行。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="itinerary">
+      <div class="section-head">
+        <div>
+          <h2>逐日行程</h2>
+          <p class="sub">表内“打车”链接会尝试唤起高德 App 直接叫车。</p>
+        </div>
+      </div>
+      <div class="days">
+        <article class="day">
+          <div class="day-header"><h3>Day 1 · 5月2日 周六 · 抵达入住</h3><span class="badge">中雨转小雨</span></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>时间</th><th>安排</th><th>地点</th><th>交通</th><th>餐饮/备注</th></tr></thead>
+              <tbody>
+                <tr><td>16:44-19:59</td><td>G207 杭州东到长沙南</td><td>高铁</td><td>已出票</td><td>抵达较晚，别再排远距离景点。</td></tr>
+                <tr><td>19:59-21:00</td><td>到酒店入住</td><td>长沙南站 -> 中山路93号</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.147093&slon=113.065510&sname=%E9%95%BF%E6%B2%99%E5%8D%97%E7%AB%99&dlon=112.982272&dlat=28.199032&dname=%E9%95%BF%E6%B2%99INTIMATE%E6%9C%89%E8%AF%BB%C2%B7%E4%B9%A6%E6%88%BF%E9%85%92%E5%BA%97">高德打车</a></td><td>下雨带行李，打车比换乘更舒服。</td></tr>
+                <tr><td>21:00-22:15</td><td>酒店周边夜宵</td><td>五一广场/中山路周边</td><td>步行</td><td>米粉、湘菜简餐、茶颜悦色；若晚点就外卖休息。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="day-header"><h3>Day 2 · 5月3日 周日 · 室内博物馆 + 岳麓橘洲夜景</h3><span class="badge">阴转多云</span></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>时间</th><th>安排</th><th>地点</th><th>交通</th><th>餐饮/备注</th></tr></thead>
+              <tbody>
+                <tr><td>08:30-09:15</td><td>早餐</td><td>酒店附近</td><td>步行</td><td>长沙米粉，别吃太撑。</td></tr>
+                <tr><td>09:15-12:00</td><td>湖南博物院/开福区室内线</td><td>湖南博物院</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.199032&slon=112.982272&sname=%E9%95%BF%E6%B2%99INTIMATE%E6%9C%89%E8%AF%BB%C2%B7%E4%B9%A6%E6%88%BF%E9%85%92%E5%BA%97&dlon=112.991677&dlat=28.210294&dname=%E6%B9%96%E5%8D%97%E7%9C%81%E5%8D%9A%E7%89%A9%E9%A6%86">高德打车</a></td><td>若没约上博物院，改开福寺/烈士公园短线。</td></tr>
+                <tr><td>13:30-15:20</td><td>回酒店午休</td><td>酒店</td><td>打车/地铁</td><td>给晚上预约留体力。</td></tr>
+                <tr><td>15:20-16:40</td><td>前往岳麓山</td><td>岳麓山景区</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.199032&slon=112.982272&sname=%E9%95%BF%E6%B2%99INTIMATE%E6%9C%89%E8%AF%BB%C2%B7%E4%B9%A6%E6%88%BF%E9%85%92%E5%BA%97&dlon=112.936763&dlat=28.187549&dname=%E5%B2%B3%E9%BA%93%E5%B1%B1">高德打车</a></td><td>17:00-22:00 预约，提前到更稳。</td></tr>
+                <tr><td>17:00-18:45</td><td>岳麓山预约游览</td><td>岳麓山</td><td>步行</td><td>阴天适合上山，低体力就走短线。</td></tr>
+                <tr><td>18:45-19:30</td><td>前往橘子洲</td><td>岳麓山 -> 橘子洲</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.187549&slon=112.936763&sname=%E5%B2%B3%E9%BA%93%E5%B1%B1&dlon=112.960976&dlat=28.184095&dname=%E6%A9%98%E5%AD%90%E6%B4%B2%E9%A3%8E%E6%99%AF%E5%90%8D%E8%83%9C%E5%8C%BA">高德打车</a></td><td>若景区交通管制，改地铁/湘江岸线夜景。</td></tr>
+                <tr><td>19:30-21:30</td><td>橘子洲夜景</td><td>橘子洲景区</td><td>景区步行</td><td>晚餐轻食或回市中心后夜宵。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="day-header"><h3>Day 3 · 5月4日 周一 · 商圈 Citywalk + 湘江夜景</h3><span class="badge">多云转晴</span></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>时间</th><th>安排</th><th>地点</th><th>交通</th><th>餐饮/备注</th></tr></thead>
+              <tbody>
+                <tr><td>10:00-12:00</td><td>IFS / 黄兴路 / 太平老街</td><td>五一商圈</td><td>步行</td><td>茶颜悦色、拍照、逛街。</td></tr>
+                <tr><td>12:00-13:30</td><td>午餐</td><td>坡子街或商场</td><td>步行</td><td>湘菜、臭豆腐、糖油粑粑；排队超过30分钟换店。</td></tr>
+                <tr><td>13:30-15:30</td><td>午休/购物</td><td>酒店/IFS</td><td>步行</td><td>避免全天硬走。</td></tr>
+                <tr><td>15:30-17:30</td><td>杜甫江阁与湘江沿岸</td><td>杜甫江阁</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.199032&slon=112.982272&sname=%E9%95%BF%E6%B2%99INTIMATE%E6%9C%89%E8%AF%BB%C2%B7%E4%B9%A6%E6%88%BF%E9%85%92%E5%BA%97&dlon=112.968624&dlat=28.184442&dname=%E6%9D%9C%E7%94%AB%E6%B1%9F%E9%98%81">高德打车</a></td><td>傍晚拍江景更好。</td></tr>
+                <tr><td>17:30-20:00</td><td>文和友/湘江周边晚餐</td><td>文和友海信广场</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.184442&slon=112.968624&sname=%E6%9D%9C%E7%94%AB%E6%B1%9F%E9%98%81&dlon=112.969688&dlat=28.190762&dname=%E6%96%87%E5%92%8C%E5%8F%8B(%E6%B5%B7%E4%BF%A1%E5%B9%BF%E5%9C%BA)">高德打车</a></td><td>两地很近，走路也可；排队久就换周边湘菜。</td></tr>
+                <tr><td>20:00-21:30</td><td>湘江夜景收尾</td><td>湘江沿岸</td><td>打车回酒店</td><td>多云转晴，夜景概率较好。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="day-header"><h3>Day 4 · 5月5日 周二 · 李自健美术馆 + 返程</h3><span class="badge">晴 29°C</span></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>时间</th><th>安排</th><th>地点</th><th>交通</th><th>餐饮/备注</th></tr></thead>
+              <tbody>
+                <tr><td>09:15-10:00</td><td>退房并寄存行李</td><td>酒店</td><td>步行</td><td>若不能寄存，带行李打车去美术馆。</td></tr>
+                <tr><td>10:00-10:50</td><td>前往李自健美术馆</td><td>酒店 -> 美术馆</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.199032&slon=112.982272&sname=%E9%95%BF%E6%B2%99INTIMATE%E6%9C%89%E8%AF%BB%C2%B7%E4%B9%A6%E6%88%BF%E9%85%92%E5%BA%97&dlon=112.949867&dlat=28.119178&dname=%E6%9D%8E%E8%87%AA%E5%81%A5%E7%BE%8E%E6%9C%AF%E9%A6%86">高德打车</a></td><td>晴天把室内美术馆放上午更舒服。</td></tr>
+                <tr><td>10:50-12:40</td><td>李自健美术馆</td><td>潇湘南路一段385号</td><td>馆内步行</td><td>成人票 x2，未显示固定入场时段。</td></tr>
+                <tr><td>13:40-15:00</td><td>回酒店取行李</td><td>美术馆 -> 酒店</td><td>打车</td><td>若行李随身，直接去长沙南站。</td></tr>
+                <tr><td>15:00-16:20</td><td>前往长沙南站</td><td>酒店/美术馆 -> 长沙南</td><td><a class="taxi" href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=28.119178&slon=112.949867&sname=%E6%9D%8E%E8%87%AA%E5%81%A5%E7%BE%8E%E6%9C%AF%E9%A6%86&dlon=113.065510&dlat=28.147093&dname=%E9%95%BF%E6%B2%99%E5%8D%97%E7%AB%99">高德打车</a></td><td>18:40 发车，建议 16:40 前到站。</td></tr>
+                <tr><td>18:40-21:54</td><td>G252 返回杭州</td><td>长沙南 -> 杭州东</td><td>高铁</td><td>站内简餐，留足安检和候车时间。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="spots">
+      <div class="section-head">
+        <div>
+          <h2>景区图片卡片</h2>
+          <p class="sub">主要景点以卡片形式展示，便于出发前快速回忆每天重点。</p>
+        </div>
+      </div>
+      <div class="grid cards">
+        <article class="card"><img src="https://store.is.autonavi.com/showpic/c807acf2618b39ba17a7b894177f9ee1" alt="湖南博物院"><div class="card-body"><h3>湖南博物院</h3><p>雨天/上午优先，若未预约则换开福寺或烈士公园。</p></div></article>
+        <article class="card"><img src="https://aos-comment.amap.com/B02DB065D6/comment/FDFD6460_5743_4936_A44B_BA3CE3435CBD_L0_001_2000_150_1759458144191_15337814.jpg" alt="岳麓山"><div class="card-body"><h3>岳麓山</h3><p>5月3日 17:00-22:00 预约窗口，建议走短而稳的路线。</p></div></article>
+        <article class="card"><img src="https://aos-comment.amap.com/B0LACDDMX3/comment/20260313-ba833722707507a999154492-5fpH33gOgEd8yYD7t12DGQ.jpg" alt="橘子洲"><div class="card-body"><h3>橘子洲</h3><p>与岳麓山同晚安排，夜景为主，人多就缩短停留。</p></div></article>
+        <article class="card"><img src="https://store.is.autonavi.com/showpic/1edd67cf6e7a414fff4080f0c17cd674" alt="杜甫江阁"><div class="card-body"><h3>杜甫江阁</h3><p>5月4日傍晚到夜间，接湘江沿岸和文和友。</p></div></article>
+        <article class="card"><img src="https://store.is.autonavi.com/showpic/2c641fac20c6bbe77bfca725fae21dfd" alt="文和友"><div class="card-body"><h3>文和友</h3><p>晚餐或夜间拍照点，排队太久直接换周边湘菜。</p></div></article>
+        <article class="card"><img src="https://store.is.autonavi.com/showpic/1fcfbe4378a524c011232154ff33ab6f" alt="李自健美术馆"><div class="card-body"><h3>李自健美术馆</h3><p>5月5日上午安排，晴天室内更舒服，下午返程。</p></div></article>
+      </div>
+    </section>
+
+    <section id="backup">
+      <div class="grid two-col">
+        <div class="panel">
+          <h3>雨天/拥挤备选</h3>
+          <ul>
+            <li>5月2日雨：只保留入住、夜宵和酒店休息。</li>
+            <li>岳麓山如路滑或人多：缩成湖南大学/岳麓山东门短线。</li>
+            <li>橘子洲如排队久：改湘江岸线夜景，不强行走全程。</li>
+            <li>文和友排队超过45分钟：换海信广场或坡子街周边湘菜。</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>随身清单</h3>
+          <ul>
+            <li>身份证、G207/G252 车票、酒店订单。</li>
+            <li>岳麓山、橘子洲、李自健美术馆预约二维码。</li>
+            <li>雨伞、舒适鞋、充电宝、轻薄外套。</li>
+            <li>高德地图提前收藏酒店、长沙南站、核心景点。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="share">
+      <div class="share">
+        <h2>怎么分享给你太太看？</h2>
+        <p>这个页面是单文件静态网页，文件名为 <code>changsha_Travel.html</code>。最省事的分享方式有三种：</p>
+        <ol>
+          <li><strong>直接发文件：</strong>把这个 HTML 文件通过微信/邮箱/网盘发给她，她用手机浏览器打开即可。高德 App 链接在手机上更好用。</li>
+          <li><strong>放到 GitHub Pages：</strong>把仓库推到 GitHub，Settings -> Pages，选择 main 分支发布；生成的网址两个人都能打开。</li>
+          <li><strong>用 Netlify / Vercel：</strong>把整个文件夹拖到 Netlify Drop，或导入 Vercel，几分钟就会得到公开链接。</li>
+        </ol>
+        <p>如果只想家庭内部看，推荐“直接发文件”或“Dropbox/OneDrive 共享链接”。如果希望像正式网页一样随时访问，推荐 GitHub Pages。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    天气来源：高德天气查询。路线以高德 App 实时交通为准；节假日请预留更多排队与打车时间。
+  </footer>
+</body>
+</html>
