@@ -341,6 +341,64 @@
       color: var(--muted);
     }
 
+    .quick-links, .food-map, .drink-rank, .souvenir-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quick-link, .food-stop, .drink-item, .souvenir-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfc;
+    }
+
+    .quick-link b, .food-stop b, .drink-item b, .souvenir-item b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .quick-link p, .food-stop p, .drink-item p, .souvenir-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 9px;
+      border-radius: 6px;
+      background: #eef6f3;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .mini-btn.alt { background: #eef3ff; color: var(--blue); }
+    .mini-btn.warn { background: #fff5e7; color: #9b610e; }
+
+    .rank-tag {
+      display: inline-flex;
+      margin-bottom: 6px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #eef6f3;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     .share {
       background: #10242d;
       color: #fff;
@@ -379,8 +437,9 @@
       <h1>长沙五一旅行攻略</h1>
       <p>住在五一广场 IFS 商圈，围绕高铁到离、岳麓山/橘子洲预约和李自健美术馆门票安排路线。同一天景区之间默认打车，天气不稳时优先室内与短步行。</p>
       <div class="hero-actions">
-        <a class="btn primary" href="amapuri://workInAmap/createWithToken?polymericId=mcp_97e75ffc47f14678a767b22f3536913a&from=MCP">打开高德行程地图</a>
+        <a class="btn primary" href="amapuri://workInAmap/createWithToken?polymericId=mcp_88dbdf2d7cb34989b6ac445173d4a9bc&from=MCP">打开高德行程地图</a>
         <a class="btn dark" href="#route">查看自绘路线</a>
+        <a class="btn dark" href="#tickets-food">点单与伴手礼</a>
         <a class="btn dark" href="#share">怎么分享给太太</a>
       </div>
     </div>
@@ -539,6 +598,90 @@
       </div>
     </section>
 
+    <section id="tickets-food">
+      <div class="section-head">
+        <div>
+          <h2>预约入口、点单与健康选择</h2>
+          <p class="sub">公开网页不展示个人票券二维码；这里放官方入口、私密提醒和适合减脂期的点单顺序。</p>
+        </div>
+      </div>
+      <div class="grid two-col">
+        <div class="panel">
+          <h3>博物馆/美术馆二维码提醒</h3>
+          <div class="quick-links">
+            <div class="quick-link">
+              <b>Day 2 上午 · 湖南博物院</b>
+              <p>到馆前在微信/官网确认预约二维码、身份证和入馆时段。若没约上，直接执行雨天备选：烈士公园或开福寺。</p>
+              <div class="link-row">
+                <a class="mini-btn" href="https://www.hnmuseum.com/" target="_blank" rel="noreferrer">湖南博物院官网</a>
+                <a class="mini-btn alt" href="https://www.amap.com/search?query=%E6%B9%96%E5%8D%97%E5%8D%9A%E7%89%A9%E9%99%A2" target="_blank" rel="noreferrer">高德查看位置</a>
+              </div>
+            </div>
+            <div class="quick-link">
+              <b>Day 4 上午 · 李自健美术馆</b>
+              <p>你们已有成人票 2 张，二维码建议只保存在手机订单/相册，不放到公开网页，避免被陌生人提前核销。</p>
+              <div class="link-row">
+                <a class="mini-btn alt" href="https://www.amap.com/search?query=%E6%9D%8E%E8%87%AA%E5%81%A5%E7%BE%8E%E6%9C%AF%E9%A6%86" target="_blank" rel="noreferrer">高德查看位置</a>
+                <a class="mini-btn warn" href="#checklist">出发前检查二维码</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>文和友点菜单</h3>
+          <ul>
+            <li><strong>优先点：</strong>口味虾/蒜蓉虾 1 份，两人共享，要求少油少盐；补一份青菜或清爽凉菜。</li>
+            <li><strong>少量尝鲜：</strong>臭豆腐、糖油粑粑、猪油拌饭都偏油，建议每样只点一份分着吃。</li>
+            <li><strong>不建议叠加：</strong>油爆虾、烤牛油、炸串、甜饮同餐全上，会和你们“高蛋白、少油炸”的目标冲突。</li>
+            <li><strong>排队超过45分钟：</strong>先拍照逛楼，晚餐改去海信广场/坡子街周边湘菜，回程再买茶颜。</li>
+          </ul>
+          <div class="link-row">
+            <a class="mini-btn alt" href="https://www.amap.com/search?query=%E6%96%87%E5%92%8C%E5%8F%8B%20%E6%B5%B7%E4%BF%A1%E5%B9%BF%E5%9C%BA" target="_blank" rel="noreferrer">高德搜文和友</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="drinks-food-map">
+      <div class="grid two-col">
+        <div class="panel">
+          <h3>茶颜悦色健康排序</h3>
+          <div class="drink-rank">
+            <div class="drink-item"><span class="rank-tag">1 更轻负担</span><b>素颜锡兰 / 纯茶类</b><p>优先无糖或三分糖，不加奶油顶和小料；适合当天已经吃了小龙虾/湘菜时搭配。</p></div>
+            <div class="drink-item"><span class="rank-tag">2 可选</span><b>声声乌龙 / 栀子生椰</b><p>选三分糖、少冰，尽量去奶油或少奶油；茶香明显，甜腻感相对低。</p></div>
+            <div class="drink-item"><span class="rank-tag">3 经典但控量</span><b>幽兰拿铁 / 桂花弄</b><p>经典款适合买一杯共享；奶油顶和坚果碎热量更高，建议三分糖、少奶油。</p></div>
+            <div class="drink-item"><span class="rank-tag">4 偶尔尝鲜</span><b>蔓越阑珊 / 抹茶葡提 / 加小料款</b><p>水果糖浆、奶油、葡萄干/面包碎叠加后糖脂更高，放在步行量大的一天少量尝。</p></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>减脂友好美食地图</h3>
+          <div class="food-map">
+            <div class="food-stop"><b>五一广场/IFS：米粉 + 茶颜</b><p>早餐选汤粉、牛肉粉，备注少油；茶颜选无糖/三分糖。</p><div class="link-row"><a class="mini-btn alt" href="https://www.amap.com/search?query=%E4%BA%94%E4%B8%80%E5%B9%BF%E5%9C%BA%20%E7%B1%B3%E7%B2%89" target="_blank" rel="noreferrer">高德搜米粉</a></div></div>
+            <div class="food-stop"><b>坡子街/太平老街：小吃打卡</b><p>臭豆腐、糖油粑粑只做分享装；把主餐留给鱼、牛肉、虾和蔬菜。</p><div class="link-row"><a class="mini-btn alt" href="https://www.amap.com/search?query=%E5%9D%A1%E5%AD%90%E8%A1%97%20%E8%87%AD%E8%B1%86%E8%85%90" target="_blank" rel="noreferrer">高德搜小吃</a></div></div>
+            <div class="food-stop"><b>湘江/文和友：口味虾</b><p>两人点一份虾加蔬菜，少点主食；饭后沿江散步消化。</p><div class="link-row"><a class="mini-btn alt" href="https://www.amap.com/search?query=%E5%8F%A3%E5%91%B3%E8%99%BE%20%E6%96%87%E5%92%8C%E5%8F%8B" target="_blank" rel="noreferrer">高德搜口味虾</a></div></div>
+            <div class="food-stop"><b>南站返程前：清淡正餐</b><p>避开重辣重油，选蒸菜、鱼、牛肉、青菜，给高铁留舒适状态。</p><div class="link-row"><a class="mini-btn alt" href="https://www.amap.com/search?query=%E9%95%BF%E6%B2%99%E5%8D%97%E7%AB%99%20%E6%B8%85%E6%B7%A1%20%E6%B9%98%E8%8F%9C" target="_blank" rel="noreferrer">高德搜南站餐厅</a></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="souvenirs">
+      <div class="panel">
+        <h3>给太太买什么伴手礼</h3>
+        <div class="souvenir-list">
+          <div class="souvenir-item"><b>首选：湖南博物院文创</b><p>马王堆/辛追主题丝巾、冰箱贴、书签、香囊，小而精致，适合送人也适合自留。购买点：湖南博物院文创商店。</p></div>
+          <div class="souvenir-item"><b>茶颜悦色周边</b><p>茶包、小莲罐、杯子、帆布袋、冰箱贴，包装好看且不占箱。购买点：五一广场/IFS 周边茶颜门店或茶颜文创集合店。</p></div>
+          <div class="souvenir-item"><b>李自健美术馆纪念品</b><p>画册、明信片、帆布袋，适合偏安静文艺风的纪念。购买点：美术馆商店，看完展顺手买。</p></div>
+          <div class="souvenir-item"><b>谨慎购买：重口味食品</b><p>酱板鸭、臭豆腐礼盒、剁椒适合爱辣的人，但味道重、液体/酱料要看高铁携带和包装密封，尽量买小包装。</p></div>
+        </div>
+        <div class="link-row">
+          <a class="mini-btn alt" href="https://www.amap.com/search?query=%E6%B9%96%E5%8D%97%E5%8D%9A%E7%89%A9%E9%99%A2%20%E6%96%87%E5%88%9B" target="_blank" rel="noreferrer">高德搜湖博文创</a>
+          <a class="mini-btn alt" href="https://www.amap.com/search?query=%E8%8C%B6%E9%A2%9C%E6%82%A6%E8%89%B2%20IFS" target="_blank" rel="noreferrer">高德搜茶颜</a>
+          <a class="mini-btn alt" href="https://www.amap.com/search?query=%E6%9D%8E%E8%87%AA%E5%81%A5%E7%BE%8E%E6%9C%AF%E9%A6%86%20%E6%96%87%E5%88%9B" target="_blank" rel="noreferrer">高德搜美术馆</a>
+        </div>
+      </div>
+    </section>
+
     <section id="spots">
       <div class="section-head">
         <div>
@@ -567,7 +710,7 @@
             <li>文和友排队超过45分钟：换海信广场或坡子街周边湘菜。</li>
           </ul>
         </div>
-        <div class="panel">
+        <div class="panel" id="checklist">
           <h3>随身清单</h3>
           <ul>
             <li>身份证、G207/G252 车票、酒店订单。</li>
@@ -594,7 +737,7 @@
   </main>
 
   <footer>
-    天气来源：高德天气查询。路线以高德 App 实时交通为准；节假日请预留更多排队与打车时间。
+    天气来源：高德天气查询；菜单与伴手礼建议结合近期公开门店信息整理。路线以高德 App 实时交通为准；节假日请预留更多排队与打车时间。
   </footer>
   <script>
     const isMobileAmapTarget = /Android|iPhone|iPad|iPod|HarmonyOS/i.test(navigator.userAgent);
